@@ -31,7 +31,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ExF-in-9wb"/>
                                 </connections>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FER-iu-QT7">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FER-iu-QT7">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dUd-40-PWC">
@@ -60,7 +60,7 @@
                                             <constraint firstAttribute="trailing" secondItem="jcI-ok-FTJ" secondAttribute="trailing" id="nPz-d5-2sZ"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageView" destination="jcI-ok-FTJ" id="n7M-B0-6on"/>
+                                            <outlet property="imageView" destination="jcI-ok-FTJ" id="1qt-oV-Gse"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -68,11 +68,14 @@
                                     <rect key="frame" x="0.0" y="153" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="syH-gN-bFJ">
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="syH-gN-bFJ">
                                             <rect key="frame" x="197" y="15" width="20" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </activityIndicatorView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="syH-gN-bFJ" firstAttribute="centerY" secondItem="7xM-wr-m7y" secondAttribute="centerY" id="UQ2-aA-wHY"/>
+                                        <constraint firstItem="syH-gN-bFJ" firstAttribute="centerX" secondItem="7xM-wr-m7y" secondAttribute="centerX" id="rko-gK-XkE"/>
+                                    </constraints>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="PBm-BU-PJX"/>

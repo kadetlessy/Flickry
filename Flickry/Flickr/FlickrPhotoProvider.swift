@@ -10,11 +10,15 @@ import UIKit
 
 class FlickrPhotoProvider {
     
-    var photoCache = [String : UIImage]()
-    
+    let photoCache: NSCache<NSString, UIImage> = {
+        let cache = NSCache<NSString, UIImage>()
+        cache.countLimit = 300
+        return cache
+    }()
+
     func requestImage(for photo: Photo, completion: @escaping (UIImage?) -> Void) {
         let URLString = "https://farm\(photo.farm).static.flickr.com/\(photo.server)/\(photo.id)_\(photo.secret).jpg"
-        if let cachedPhoto = photoCache[URLString] {
+        if let cachedPhoto = photoCache.object(forKey: URLString as NSString) {
             completion(cachedPhoto)
         }
         
@@ -29,7 +33,7 @@ class FlickrPhotoProvider {
                 return
             }
             
-            self?.photoCache[URLString] = photoImage
+            self?.photoCache.setObject(photoImage, forKey:URLString as NSString)
             completion(photoImage)
         }.resume()
     }

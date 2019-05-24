@@ -99,16 +99,12 @@ extension FlickrPhotoSearchVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? FlickrPhotoCell else {
-            fatalError("Collection view: invalid cell type")
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FlickrPhotoCell
         
         let photo = searchResults[indexPath.row]
-        cell.imageView.image = nil
         photoProvider.requestImage(for: photo, completion: { (image) -> Void in
             DispatchQueue.main.async {
-                let indexPath_ = collectionView.indexPath(for: cell)
-                if indexPath == indexPath_ {
+                if collectionView.indexPath(for: cell)?.row == indexPath.row {
                     cell.imageView.image = image ?? UIImage(named: "nothing-found")
                 }
             }

@@ -10,4 +10,8 @@ import UIKit
 
 class FlickrPhotoCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    
+    override func prepareForReuse() {
+        imageView.image = nil
+    }
 }
